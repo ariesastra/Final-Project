@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, FlatList } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useFocusEffect } from "@react-navigation/native";
 
 import {
   Box,
@@ -25,11 +26,17 @@ export default function ContentHorizontal({ navigation }) {
   const [showModal, setShowModal] = useState(false);
   const [subscription, setSubscription] = useState(null);
 
-  useEffect(async () => {
-    if (!subscription) {
-      setSubscription(await AsyncStorage.getItem("@subscription"));
-    }
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      const fetchSubs = async () => {
+        if (!subscription) {
+          const cekSubs = await AsyncStorage.getItem("@subscription");
+          setSubscription(cekSubs);
+        }
+      };
+      fetchSubs();
+    }, [])
+  );
 
   // Buat narik Access Token
   const getStorage = async () => {

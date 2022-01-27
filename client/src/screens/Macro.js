@@ -58,7 +58,7 @@ export const Example = ({ navigation }) => {
     try {
       e.preventDefault();
       console.log("SUBMIT");
-      setLoading(true)
+      setLoading(true);
       console.log({ formMacro });
       const sendMacro = await postMacro({
         variables: formMacro,
@@ -80,7 +80,7 @@ export const Example = ({ navigation }) => {
     } catch (err) {
       console.log({ err });
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   };
 
@@ -313,13 +313,15 @@ export const Example = ({ navigation }) => {
             <Button
               size="lg"
               variant={"solid"}
-              style={{ marginTop: 10}}
+              style={{ marginTop: 10 }}
               px="3"
               marginBottom="5"
               colorScheme="gray"
             >
-              <Box style={{flexDirection: "row", alignItems: "center"}}>
-                <Text marginRight={2} fontSize={18}>Submit</Text>
+              <Box style={{ flexDirection: "row", alignItems: "center" }}>
+                <Text marginRight={2} fontSize={18}>
+                  Submit
+                </Text>
                 <Entypo name="block" size={20} color="black" />
               </Box>
             </Button>
@@ -332,7 +334,7 @@ export const Example = ({ navigation }) => {
               <VStack space={5}>
                 <HStack alignItems="center" justifyContent="space-between">
                   <Text fontWeight="medium">Total Daily Calorie Intake</Text>
-                  <Text color="blueGray.400">{resultMacro.calorie}</Text>
+                  <Text color="blueGray.400">{resultMacro.calorie} cal</Text>
                 </HStack>
                 <HStack alignItems="center">
                   <Text fontWeight="medium">With a balance diet you need:</Text>
@@ -340,19 +342,19 @@ export const Example = ({ navigation }) => {
                 <HStack alignItems="center" justifyContent="space-between">
                   <Text fontSize="xs">Carbs</Text>
                   <Text color="blueGray.400" fontSize="xs">
-                    {resultMacro.carbs}
+                    {resultMacro.carbs} g
                   </Text>
                 </HStack>
                 <HStack alignItems="center" justifyContent="space-between">
                   <Text fontSize="xs">Fat</Text>
                   <Text color="blueGray.400" fontSize="xs">
-                    {resultMacro.fat}
+                    {resultMacro.fat} g
                   </Text>
                 </HStack>
                 <HStack alignItems="center" justifyContent="space-between">
                   <Text fontSize="xs">Protein</Text>
                   <Text color="blueGray.400" fontSize="xs">
-                    {resultMacro.protein}
+                    {resultMacro.protein} g
                   </Text>
                 </HStack>
               </VStack>
